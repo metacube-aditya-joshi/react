@@ -1,0 +1,43 @@
+.clock-container{
+    
+    height: 100vh;
+    background-color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  
+}
+
+.time{
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    align-items: center;
+    width:max-content;
+    height: max-content;
+    background-color: black;
+    border-radius: 2rem;
+    font-size: 5rem;
+    padding: 2rem;
+}
+.hour{
+    display: flex;
+    padding:2rem;
+}
+.second{
+    display: flex;
+    padding:2rem;
+  
+}
+.minute{
+    display: flex;
+ 
+    padding:2rem;
+}
+h5{
+    padding-left: 1rem;
+    margin-top: 3.7rem;
+    font-size: 1rem;
+}
+
