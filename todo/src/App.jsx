@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import { useState } from "react";
+import "./App.css";
+import TodoForm from "./components/TodoForm";
+import { todos } from "./data/todos.js";
+import Todo from "./components/Todo";
+import DisplayTodos from "./components/DisplayTodos";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [todoList, setTodoList] = useState([]);
+  const [showTodoForm, setShowTodoForm] = useState(false);
+  const [filterForm,setFilterForm]=useState(false);
+  const displayTodoForm = () => {
+    setShowTodoForm(!showTodoForm);
+  };
+  const displayFilter=()=>{
+    setFilterForm(!filterForm);
+  };
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {todos.map((todo) => {
+        return <Todo todo={todo.name} status={todo.status} />;
+      })}
+      <AddCircleIcon onClick={displayTodoForm} />
+      {showTodoForm && (
+        <TodoForm todoList={todoList} setTodoList={setTodoList} setShowTodoForm={setShowTodoForm} />
+      )}
+      <FilterAltIcon onClick={displayFilter}/>
+      {console.log(todoList)}
+      {filterForm && <DisplayTodos todoList={todoList} setFilterForm={setFilterForm} />}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
