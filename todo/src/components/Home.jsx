@@ -17,9 +17,9 @@ function Home({ todoList }) {
   return (
     <div className="body">
       <div className="nav">
-        <AddCircleIcon onClick={handleNavigationForm} />
+        <AddCircleIcon className="icons" onClick={handleNavigationForm} />
 
-        <FilterAltIcon onClick={handleNavigationFilter} />
+        <FilterAltIcon className="icons"onClick={handleNavigationFilter} />
       </div>
       <div className="todoDisplayArea">
         {todoList.map((todo,index) => {

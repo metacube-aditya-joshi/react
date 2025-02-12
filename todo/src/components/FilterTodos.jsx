@@ -8,16 +8,15 @@ function FilterTodos({ todoList }) {
   const [data, setData] = useState([]);
   const [parameter, setParameter] = useState("title");
   const [key, setKey] = useState("");
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
-  function navigateHome(){
-   
-    navigate('/');
+  function navigateHome() {
+    navigate("/");
   }
   useEffect(() => {
     console.log("value changed:", parameter);
     console.log("data:", data);
-  }, [parameter,data]);
+  }, [parameter, data]);
 
   const filterData = () => {
     console.log("todoList:", todoList);
@@ -26,9 +25,8 @@ function FilterTodos({ todoList }) {
   };
 
   return (
-    <div className="todoForm">
-      
-      <div>
+    <div className="body ">
+      <div className="todoForm">
         <select
           {...register("view", { required: true })}
           onChange={(e) => setParameter(e.target.value)}
@@ -38,7 +36,11 @@ function FilterTodos({ todoList }) {
         </select>
 
         {parameter === "title" && (
-          <input {...register("key", { required: true })} onChange={(e)=>setKey(e.target.value)} placeholder="text" />
+          <input
+            {...register("key", { required: true })}
+            onChange={(e) => setKey(e.target.value)}
+            placeholder="text"
+          />
         )}
         {parameter === "status" && (
           <select
@@ -53,16 +55,14 @@ function FilterTodos({ todoList }) {
         <button onClick={navigateHome}>Back to Home Page</button>
       </div>
 
-      <div>
-        {data.length > 0 ? (
-          data.map((todo, index) => (
-            <div key={index}>
-              <p>{todo.todoText} - {todo.status}</p>
-            </div>
-          ))
-        ) : (
-          <p>No todos found.</p>
-        )}
+      <div className="todoDisplayArea">
+        {data.map((todo, index) => (
+          <div key={index}>
+            <p>
+              {todo.todoText} - {todo.status}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
   );

@@ -1,15 +1,83 @@
-.body{
-
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.nav{
-
+.body {
+  background-color: antiquewhite;
+  width: 100vw;
+  height: 100vh;
 }
 
-.todoDisplayArea{
-
+.nav {
+  background-color: aquamarine;
+  height: 5%;
+  padding: 1rem;
+  display: flex;
+  justify-content: end;
 }
 
-.todoForm{
-  
+.icons {
+  padding-right: 1rem;
+}
+
+.todoDisplayArea {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 5rem;
+  padding-left: 5rem;
+}
+
+.todoCont {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-self: center;
+  align-self: flex-start;
+  margin: 10px;
+  background-color: azure;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 8px; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.todoForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  gap: 1.5rem; 
+  padding: 2rem; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+input,
+select {
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc; 
+  width: 100%; 
+  max-width: 300px;
+}
+
+input:focus,
+select:focus {
+  border-color: #3f51b5; 
+  outline: none; 
+}
+
+button {
+  padding: 1rem 2rem;
+  border-radius: 10px; 
+  background-color: #3f51b5; 
+  color: white; 
+  border: none; 
+  cursor: pointer; 
+  transition: background-color 0.3s; 
+}
+
+button:hover {
+  background-color: #303f9f; 
 }

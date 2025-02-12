@@ -2,10 +2,14 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { createTodo } from "../fucntionality/createTodo.js";
 import Button from '@mui/material/Button';
+
 import { useNavigate } from "react-router";
 function TodoForm({ todoList, setTodoList }) {
   const { register, handleSubmit, resetField } = useForm();
   const navigate=useNavigate();
+  const navigateHome=()=>{
+    navigate('/');
+  }
   const onSubmit = handleSubmit((data) => {
    
     resetField("todoText");
@@ -15,7 +19,7 @@ function TodoForm({ todoList, setTodoList }) {
     createTodo(data);
   });
   return (
-    <form>
+    <form className="body todoForm">
       <input
         {...register("todoText", { required: true })}
         type="text"
@@ -27,6 +31,7 @@ function TodoForm({ todoList, setTodoList }) {
         <option value="completed">Completed</option>
       </select>
       <Button variant="contained" onClick={onSubmit}>Create</Button>
+      <Button variant="contained" onClick={navigateHome}>Back to home</Button>
     </form>
   );
 }
