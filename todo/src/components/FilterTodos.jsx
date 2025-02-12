@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { filterTodos } from "../fucntionality/filterTodos.js";
-
+import Home from "./Home.jsx";
+import { useNavigate } from "react-router";
 function FilterTodos({ todoList }) {
   const { register, handleSubmit, resetForm, getValues } = useForm();
   const [data, setData] = useState([]);
   const [parameter, setParameter] = useState("title");
   const [key, setKey] = useState("");
+  const navigate=useNavigate();
 
+  function navigateHome(){
+   
+    navigate('/');
+  }
   useEffect(() => {
     console.log("value changed:", parameter);
     console.log("data:", data);
@@ -21,6 +27,7 @@ function FilterTodos({ todoList }) {
 
   return (
     <div className="todoForm">
+      
       <div>
         <select
           {...register("view", { required: true })}
@@ -31,7 +38,7 @@ function FilterTodos({ todoList }) {
         </select>
 
         {parameter === "title" && (
-          <input {...register("key", { required: true })} placeholder="text" />
+          <input {...register("key", { required: true })} onChange={(e)=>setKey(e.target.value)} placeholder="text" />
         )}
         {parameter === "status" && (
           <select
@@ -43,6 +50,7 @@ function FilterTodos({ todoList }) {
           </select>
         )}
         <button onClick={filterData}>Click</button>
+        <button onClick={navigateHome}>Back to Home Page</button>
       </div>
 
       <div>

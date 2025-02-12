@@ -15,15 +15,15 @@ function Home({ todoList }) {
   }
 
   return (
-    <div>
-      <div>
+    <div className="body">
+      <div className="nav">
         <AddCircleIcon onClick={handleNavigationForm} />
 
         <FilterAltIcon onClick={handleNavigationFilter} />
       </div>
-      <div>
+      <div className="todoDisplayArea">
         {todoList.map((todo,index) => {
-          return <Todo index name={todo.todoText} status={todo.status} />;
+          return <Todo index={index} name={todo.todoText} status={todo.status} />;
         })}
       </div>
     </div>
