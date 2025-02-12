@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { filterTodos } from "../fucntionality/filterTodos";
-import { todos } from "../data/todos.js";
+import { filterTodos } from "../fucntionality/filterTodos.js";
 
-function DisplayTodos({ todoList, setFilterForm }) {
+function FilterTodos({ todoList }) {
   const { register, handleSubmit, resetForm, getValues } = useForm();
   const [data, setData] = useState([]);
   const [parameter, setParameter] = useState("title");
@@ -18,8 +17,6 @@ function DisplayTodos({ todoList, setFilterForm }) {
     console.log("todoList:", todoList);
     const filteredData = filterTodos(todoList, parameter, key);
     setData(filteredData);
-    console.log("Filtered data:", data);
-    setFilterForm(false);
   };
 
   return (
@@ -52,7 +49,7 @@ function DisplayTodos({ todoList, setFilterForm }) {
         {data.length > 0 ? (
           data.map((todo, index) => (
             <div key={index}>
-              <p>{todo.title} - {todo.status}</p>
+              <p>{todo.todoText} - {todo.status}</p>
             </div>
           ))
         ) : (
@@ -63,4 +60,4 @@ function DisplayTodos({ todoList, setFilterForm }) {
   );
 }
 
-export default DisplayTodos;
+export default FilterTodos;

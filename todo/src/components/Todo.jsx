@@ -1,9 +1,9 @@
 import React from "react";
 
-function Todo({ todo,status }) {
+function Todo({ name,status }) {
   return (
     <div>
-      <div>{todo}</div>
+      <div>{name}</div>
       <div>{status}</div>
     </div>
   );

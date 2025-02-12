@@ -2,13 +2,16 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { createTodo } from "../fucntionality/createTodo.js";
 import Button from '@mui/material/Button';
-function TodoForm({ todoList, setTodoList, setShowTodoForm }) {
+import { useNavigate } from "react-router";
+function TodoForm({ todoList, setTodoList }) {
   const { register, handleSubmit, resetField } = useForm();
+  const navigate=useNavigate();
   const onSubmit = handleSubmit((data) => {
+   
     resetField("todoText");
     resetField("status");
     setTodoList([...todoList, data]);
-    setShowTodoForm(false);
+    navigate('/');
     createTodo(data);
   });
   return (
